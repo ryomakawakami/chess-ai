@@ -1,3 +1,5 @@
+from piece_type import PieceType
+
 class Piece:
     def __init__(self, pieceType, color, position):
         self.pieceType = pieceType
