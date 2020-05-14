@@ -29,17 +29,43 @@ class Board:
         self.pieces.append(piece)
 
         # White queen
-        piece = Piece(PieceType.QUEEN, 0, [3,0]) #Queen is on left -MLA
+        piece = Piece(PieceType.QUEEN, 0, [3,0]) #Queen is on left
         self.pieces.append(piece)
 
         # White king
-        piece = Piece(PieceType.KING, 0, [4,0]) #King is on right -MLA
+        piece = Piece(PieceType.KING, 0, [4,0]) #King is on right
         self.pieces.append(piece)
 
         # Black pawns
         for i in range(8):
             piece = Piece(PieceType.PAWN, 1, [i, 6])
             self.pieces.append(piece)
+
+        # Black rooks
+        piece = Piece(PieceType.ROOK, 1, [0,7])
+        self.pieces.append(piece)
+        piece = Piece(PieceType.ROOK, 1, [7,7])
+        self.pieces.append(piece)
+
+        # Black knights
+        piece = Piece(PieceType.KNIGHT, 1, [1,7])
+        self.pieces.append(piece)
+        piece = Piece(PieceType.KNIGHT, 1, [6,7])
+        self.pieces.append(piece)
+
+        # Black bishops
+        piece = Piece(PieceType.BISHOP, 1, [2,7])
+        self.pieces.append(piece)
+        piece = Piece(PieceType.BISHOP, 1, [5,7])
+        self.pieces.append(piece)
+
+        # Black queen
+        piece = Piece(PieceType.QUEEN, 1, [4,7]) #Queen is on right
+        self.pieces.append(piece)
+
+        # Black king
+        piece = Piece(PieceType.KING, 1, [3,7]) #King is on left
+        self.pieces.append(piece)
 
         # Update legal moves for pieces
         self.update()
