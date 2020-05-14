@@ -7,4 +7,5 @@ class PieceType(Enum):
     BISHOP = 3
     QUEEN = 4
     KING = 5
+    YIYANG = 6
     MICHAEL = 420
