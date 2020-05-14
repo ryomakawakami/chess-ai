@@ -1,0 +1,15 @@
+BRAINSTORMING chessai
+
+Language: Python
+
+Classes:
+-Board
+	-Set of pieces
+	-Indicates where pieces are
+	-Ask if piece can move
+
+-Pieces
+	-ID
+	-Possible Moves
+	-Position
+	
