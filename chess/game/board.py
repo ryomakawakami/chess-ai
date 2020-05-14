@@ -1,5 +1,5 @@
-from piece import Piece
-from piece_type import PieceType
+from chess.game.piece import Piece
+from chess.game.piece_type import PieceType
 
 class Board:
     def __init__ (self):
@@ -73,6 +73,3 @@ class Board:
     def update(self):
         for piece in self.pieces:
             piece.updateMoves(self.pieces)
-    
-board = Board()
-print(board.pieces[0].pieceType)

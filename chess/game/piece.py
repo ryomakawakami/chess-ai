@@ -1,4 +1,4 @@
-from piece_type import PieceType
+from chess.game.piece_type import PieceType
 
 class Piece:
     def __init__(self, pieceType, color, position):
