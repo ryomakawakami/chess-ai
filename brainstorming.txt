@@ -9,7 +9,6 @@ Classes:
 	-Ask if piece can move
 
 -Pieces
-	-ID
-	-Possible Moves
-	-Position
+	-Parameters: Piece Type, Color, Position
+	-Possible moves
 	
