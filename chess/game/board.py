@@ -3,73 +3,59 @@ from chess.game.piece_type import PieceType
 
 class Board:
     def __init__ (self):
-        self.pieces = []
+        self.squares = [[None for i in range(8)] for j in range(8)]
 
         # White pawns (0, 1) to (7, 1)
         for i in range(8):
-            piece = Piece(PieceType.PAWN, 0, [i, 1])
-            self.pieces.append(piece)
+            self.squares[i][1] = Piece(PieceType.PAWN, 0)
         
-        # White rooks
-        piece = Piece(PieceType.ROOK, 0, [0,0])
-        self.pieces.append(piece)
-        piece = Piece(PieceType.ROOK, 0, [7,0])
-        self.pieces.append(piece)
+        # White rooks on (0, 0) and (7, 0)
+        self.squares[0][0] = Piece(PieceType.ROOK, 0)
+        self.squares[7][0] = Piece(PieceType.ROOK, 0)
 
-        # White knights
-        piece = Piece(PieceType.KNIGHT, 0, [1,0])
-        self.pieces.append(piece)
-        piece = Piece(PieceType.KNIGHT, 0, [6,0])
-        self.pieces.append(piece)
+        # White knights on (1, 0) and (6, 0)
+        self.squares[1][0] = Piece(PieceType.KNIGHT, 0)
+        self.squares[6][0] = Piece(PieceType.KNIGHT, 0)
 
-        # White bishops
-        piece = Piece(PieceType.BISHOP, 0, [2,0])
-        self.pieces.append(piece)
-        piece = Piece(PieceType.BISHOP, 0, [5,0])
-        self.pieces.append(piece)
+        # White bishops on (2, 0) and (5, 0)
+        self.squares[2][0] = Piece(PieceType.BISHOP, 0)
+        self.squares[5][0] = Piece(PieceType.BISHOP, 0)
 
-        # White queen
-        piece = Piece(PieceType.QUEEN, 0, [3,0]) #Queen is on left
-        self.pieces.append(piece)
+        # White queen on (3, 0) (queen on left)
+        self.squares[3][0] = Piece(PieceType.QUEEN, 0)
 
-        # White king
-        piece = Piece(PieceType.KING, 0, [4,0]) #King is on right
-        self.pieces.append(piece)
+        # White king on (4, 0)
+        self.squares[4][0] = Piece(PieceType.KING, 0)
 
-        # Black pawns
+        # Black pawns (0, 6) to (7, 6)
         for i in range(8):
-            piece = Piece(PieceType.PAWN, 1, [i, 6])
-            self.pieces.append(piece)
+            piece = Piece(PieceType.PAWN, 1)
+            self.squares[i][6] = piece
+        
+        # Black rooks on (0, 7) and (7, 7)
+        self.squares[0][7] = Piece(PieceType.ROOK, 1)
+        self.squares[7][7] = Piece(PieceType.ROOK, 1)
 
-        # Black rooks
-        piece = Piece(PieceType.ROOK, 1, [0,7])
-        self.pieces.append(piece)
-        piece = Piece(PieceType.ROOK, 1, [7,7])
-        self.pieces.append(piece)
+        # Black knights on (1, 7) and (6, 7)
+        self.squares[1][7] = Piece(PieceType.KNIGHT, 1)
+        self.squares[6][7] = Piece(PieceType.KNIGHT, 1)
 
-        # Black knights
-        piece = Piece(PieceType.KNIGHT, 1, [1,7])
-        self.pieces.append(piece)
-        piece = Piece(PieceType.KNIGHT, 1, [6,7])
-        self.pieces.append(piece)
+        # Black bishops on (2, 7) and (5, 7)
+        self.squares[2][7] = Piece(PieceType.BISHOP, 1)
+        self.squares[5][7] = Piece(PieceType.BISHOP, 1)
 
-        # Black bishops
-        piece = Piece(PieceType.BISHOP, 1, [2,7])
-        self.pieces.append(piece)
-        piece = Piece(PieceType.BISHOP, 1, [5,7])
-        self.pieces.append(piece)
+        # White queen on (3, 7) (queen on right)
+        self.squares[3][7] = Piece(PieceType.QUEEN, 1)
 
-        # Black queen
-        piece = Piece(PieceType.QUEEN, 1, [4,7]) #Queen is on right
-        self.pieces.append(piece)
-
-        # Black king
-        piece = Piece(PieceType.KING, 1, [3,7]) #King is on left
-        self.pieces.append(piece)
+        # White king on (4, 7)
+        self.squares[4][7] = Piece(PieceType.KING, 1)
 
         # Update legal moves for pieces
         self.update()
 
     def update(self):
-        for piece in self.pieces:
-            piece.updateMoves(self.pieces)
+        for row in self.squares:
+            for piece in row:
+                if not piece:
+                    continue
+                piece.updateMoves(self.squares)

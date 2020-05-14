@@ -1,11 +1,10 @@
 from chess.game.piece_type import PieceType
 
 class Piece:
-    def __init__(self, pieceType, color, position):
+    def __init__(self, pieceType, color):
         self.pieceType = pieceType
         self.color = color
-        self.position = position
         self.moves = []
 
-    def updateMoves(self, pieces):
+    def updateMoves(self, squares):
         pass
