@@ -4,6 +4,9 @@ from chess.game.piece_type import PieceType
 
 if __name__ == "__main__":
     board = Board()
+
+    print(board.squares[5][1].moves)
+
     for row in board.squares:
         rowText = ""
         for piece in row:
