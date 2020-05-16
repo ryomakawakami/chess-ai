@@ -90,3 +90,38 @@ class Piece:
 
                 self.moves.append((x, tempY - 1))
                 break
+
+        # see knight_moves.png for option numbering
+        if self.pieceType == PieceType.KNIGHT:
+            
+            # option 1
+            if x < 7 and y < 6 and squares[x + 1][y + 2] == None:
+                self.moves.append(x + 1, y + 1)
+
+            # option 2
+            if x < 6 and y < 7 and squares[x + 2][y + 1] == None:
+                self.moves.append(x + 2, y + 1)
+            
+            # option 3
+            if x < 6 and y > 0 and squares[x + 2][y - 1] == None:
+                self.moves.append(x + 2, y - 1)
+
+            # option 4
+            if x < 7 and y > 1 and squares[x + 1][y - 2] == None:
+                self.moves.append(x + 1, y - 2)
+            
+            # option 5
+            if x > 0 and y > 1 and squares[x - 1][y - 2] == None:
+                self.moves.append(x - 1, y - 2)
+            
+            # option 6
+            if x > 1 and y > 0 and squares[x - 2][y - 1] == None:
+                self.moves.append(x - 2, y - 1)
+            
+            # option 7
+            if x > 1 and y < 7 and squares[x - 2][y + 1] == None:
+                self.moves.append(x - 2, y + 1)
+            
+            # option 8
+            if x > 0 and y < 6 and squares[x - 1][y + 2] == None:
+                self.moves.append(x - 1, y + 2)
