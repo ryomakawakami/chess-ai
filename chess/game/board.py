@@ -49,7 +49,7 @@ class Board:
 
         # White king on (4, 7)
         self.squares[4][7] = Piece(PieceType.KING, 1)
-
+        
         # Update legal moves for pieces
         self.update()
 

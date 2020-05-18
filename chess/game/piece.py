@@ -113,65 +113,6 @@ class Piece:
 
             self.moves.append((x, tempY - 1))
             break
-        tempX = x
-        while tempX < 7:
-            nextPiece = squares[tempX + 1][y]
-
-            if nextPiece == None:
-                self.moves.append((tempX + 1, y))
-                tempX += 1
-                continue
-
-            if nextPiece.color == self.color:
-                break
-
-            self.moves.append((tempX + 1, y))
-            break
-
-        tempX = x
-        while tempX > 0:
-            nextPiece = squares[tempX - 1][y]
-            
-            if nextPiece == None:
-                self.moves.append((tempX - 1, y))
-                tempX -= 1
-                continue
-
-            if nextPiece.color == self.color:
-                break
-
-            self.moves.append((tempX - 1, y))
-            break
-
-        tempY = y
-        while tempY < 7:
-            nextPiece = squares[x][tempY + 1]
-
-            if nextPiece == None:
-                self.moves.append((x, tempY + 1))
-                tempY += 1
-                continue
-
-            if nextPiece.color == self.color:
-                break
-
-            self.moves.append((x, tempY + 1))
-            break
-
-        tempY = y
-        while tempY > 0:
-            nextPiece = squares[x][tempY - 1]
-
-            if nextPiece == None:
-                self.moves.append((x, tempY - 1))
-                tempY -= 1
-                continue
-
-            if nextPiece.color == self.color:
-                break
-
-            self.moves.append((x, tempY - 1))
-            break
     
     def addKnightMoves(self, squares, position):
         x, y = position
