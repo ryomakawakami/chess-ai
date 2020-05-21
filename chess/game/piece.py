@@ -32,24 +32,31 @@ class Piece:
     def addPawnMoves(self, squares, position):
         x, y = position
 
-        if y == 7:
+        if self.color == 0 and y == 7:
+            return
+        elif self.color == 1 and y == 0:
             return
 
+        fwd = 1
+        if self.color == 1:
+            fwd = -1
+
         # 1 square forward
-        if squares[x][y + 1] == None:
-            self.moves.append((x, y + 1))
+        if squares[x][y + fwd] == None:
+            self.moves.append((x, y + fwd))
 
         # 2 squares forward (pawn first move or idk)
-        if y == 1 and squares[x][y + 1] == None and squares[x][y + 2] == None:
-            self.moves.append((x, y + 2))
+        if (y == 1 and self.color == 0) or (y == 6 and self.color == 1):
+            if squares[x][y + fwd] == None and squares[x][y + 2 * fwd] == None:
+                self.moves.append((x, y + 2 * fwd))
 
         # Capture left
-        if x > 0 and squares[x - 1][y + 1] != None and squares[x - 1][y + 1].color != self.color:
-            self.moves.append((x - 1, y + 1))
+        if x > 0 and squares[x - 1][y + fwd] != None and squares[x - 1][y + fwd].color != self.color:
+            self.moves.append((x - 1, y + fwd))
 
         # Capture right
-        if x < 7 and squares[x + 1][y + 1] != None and squares[x + 1][y + 1].color != self.color:
-            self.moves.append((x + 1, y + 1))
+        if x < 7 and squares[x + 1][y + fwd] != None and squares[x + 1][y + fwd].color != self.color:
+            self.moves.append((x + 1, y + fwd))
 
     def addRookMoves(self, squares, position):
         x, y = position
@@ -161,4 +168,36 @@ class Piece:
         return
 
     def addKingMoves(self, squares, position):
-        return
+        x, y = position
+
+        if x > 0:
+            if squares[x - 1][y] == None or squares[x - 1][y].color != self.color:
+                self.moves.append((x - 1, y))
+
+            if y > 0:
+                if squares[x - 1][y - 1] == None or squares[x - 1][y - 1].color != self.color:
+                    self.moves.append((x - 1, y - 1))
+
+            if y < 7:
+                if squares[x - 1][y + 1] == None or squares[x - 1][y + 1].color != self.color:
+                    self.moves.append((x - 1, y + 1))
+
+        if x < 7:
+            if squares[x + 1][y] == None or squares[x + 1][y].color != self.color:
+                self.moves.append((x + 1, y))
+
+            if y > 0:
+                if squares[x + 1][y - 1] == None or squares[x + 1][y - 1].color != self.color:
+                    self.moves.append((x + 1, y - 1))
+
+            if y < 7:
+                if squares[x + 1][y + 1] == None or squares[x + 1][y + 1].color != self.color:
+                    self.moves.append((x + 1, y + 1))
+
+        if y > 0:
+            if squares[x][y - 1] == None or squares[x][y - 1].color != self.color:
+                self.moves.append((x, y - 1))
+
+        if y < 7:
+            if squares[x][y + 1] == None or squares[x][y + 1].color != self.color:
+                self.moves.append((x, y + 1))
