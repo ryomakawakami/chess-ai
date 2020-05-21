@@ -158,6 +158,64 @@ class Piece:
                 self.moves.append((x - 1, y + 2))
 
     def addBishopMoves(self, squares, position):
+
+        x, y = position
+        
+        tempX = x
+        tempY = y
+
+        while(tempX <7 and tempY <7):
+            nextPiece = squares[tempX+1][tempY+1]
+            if(nextPiece== None):
+                self.moves.append((tempX+1, tempY+1))
+                tempX+=1
+                tempY+=1
+                continue
+            if(nextPiece.color == self.color):
+                break
+            self.moves.append((tempX+1, tempY+1))
+            break
+        tempX = x
+        tempY = y
+        while(tempX <7 and tempY >0):
+            nextPiece = squares[tempX+1][tempY-1]
+            if(nextPiece== None):
+                self.moves.append((tempX+1, tempY-1))
+                tempX+=1
+                tempY-=1
+                continue
+            if(nextPiece.color == self.color):
+                break
+            self.moves.append((tempX+1, tempY-1))
+            break
+        tempX = x
+        tempY = y
+        while(tempX >0 and tempY <7):
+            nextPiece = squares[tempX-1][tempY+1]
+            if(nextPiece== None):
+                self.moves.append((tempX-1, tempY+1))
+                tempX-=1
+                tempY+=1
+                continue
+            if(nextPiece.color == self.color):
+                break
+            self.moves.append((tempX-1, tempY+1))
+            break
+        tempX = x
+        tempY = y
+        while(tempX >0 and tempY >0):
+            nextPiece = squares[tempX-1][tempY-1]
+            if(nextPiece== None):
+                self.moves.append((tempX-1, tempY-1))
+                tempX-=1
+                tempY-=1
+                continue
+            if(nextPiece.color == self.color):
+                break
+            self.moves.append((tempX-1, tempY-1))
+            break
+        tempX = x
+        tempY = y      
         return
 
     def addKingMoves(self, squares, position):
