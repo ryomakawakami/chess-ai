@@ -165,65 +165,59 @@ class Piece:
                 self.moves.append((x - 1, y + 2))
 
     def addBishopMoves(self, squares, position):
-
         x, y = position
-        
-        tempX = x
-        tempY = y
 
-        while(tempX <7 and tempY <7):
-            nextPiece = squares[tempX+1][tempY+1]
-            if(nextPiece== None):
-                self.moves.append((tempX+1, tempY+1))
-                tempX+=1
-                tempY+=1
+        offset = 0
+        while x + offset < 7 and y + offset < 7:
+            nextPiece = squares[x + offset + 1][y + offset + 1]
+            if nextPiece == None:
+                offset += 1
+                self.moves.append((x + offset, y + offset))
                 continue
-            if(nextPiece.color == self.color):
+            if nextPiece.color == self.color:
                 break
-            self.moves.append((tempX+1, tempY+1))
+            offset += 1
+            self.moves.append((x + offset, y + offset))
             break
-        tempX = x
-        tempY = y
-        while(tempX <7 and tempY >0):
-            nextPiece = squares[tempX+1][tempY-1]
-            if(nextPiece== None):
-                self.moves.append((tempX+1, tempY-1))
-                tempX+=1
-                tempY-=1
+
+        offset = 0
+        while x + offset < 7 and y - offset > 0:
+            nextPiece = squares[x + offset + 1][y - offset - 1]
+            if nextPiece == None:
+                offset += 1
+                self.moves.append((x + offset, y - offset))
                 continue
-            if(nextPiece.color == self.color):
+            if nextPiece.color == self.color:
                 break
-            self.moves.append((tempX+1, tempY-1))
+            offset += 1
+            self.moves.append((x + offset, y - offset))
             break
-        tempX = x
-        tempY = y
-        while(tempX >0 and tempY <7):
-            nextPiece = squares[tempX-1][tempY+1]
-            if(nextPiece== None):
-                self.moves.append((tempX-1, tempY+1))
-                tempX-=1
-                tempY+=1
+
+        offset = 0
+        while x - offset > 0 and y + offset < 7:
+            nextPiece = squares[x - offset - 1][y + offset + 1]
+            if nextPiece == None:
+                offset += 1
+                self.moves.append((x - offset, y + offset))
                 continue
-            if(nextPiece.color == self.color):
+            if nextPiece.color == self.color:
                 break
-            self.moves.append((tempX-1, tempY+1))
+            offset += 1
+            self.moves.append((x - offset, y + offset))
             break
-        tempX = x
-        tempY = y
-        while(tempX >0 and tempY >0):
-            nextPiece = squares[tempX-1][tempY-1]
-            if(nextPiece== None):
-                self.moves.append((tempX-1, tempY-1))
-                tempX-=1
-                tempY-=1
+
+        offset = 0
+        while x - offset > 0 and y - offset > 0:
+            nextPiece = squares[x - offset - 1][y - offset - 1]
+            if nextPiece == None:
+                offset += 1
+                self.moves.append((x - offset, y - offset))
                 continue
-            if(nextPiece.color == self.color):
+            if nextPiece.color == self.color:
                 break
-            self.moves.append((tempX-1, tempY-1))
+            offset += 1
+            self.moves.append((x - offset, y - offset))
             break
-        tempX = x
-        tempY = y      
-        return
 
     def addKingMoves(self, squares, position):
         x, y = position

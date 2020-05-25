@@ -70,7 +70,7 @@ class Board:
     def isValidMove(self, pieceLocation, move):
         x, y = pieceLocation
         for mov in self.squares[x][y].moves:
-            if(move == mov):
+            if move == mov:
                 return True
 
         return False        
@@ -78,9 +78,9 @@ class Board:
     def movePiece(self, oldPos, newPos, color):
         oldX, oldY = oldPos
         newX, newY = newPos
-        if(self.squares[oldX][oldY] == None or self.squares[oldX][oldY].color != color):
+        if self.squares[oldX][oldY] == None or self.squares[oldX][oldY].color != color:
             print("Error: Piece does not exist or is not on your side.")
-        elif(not(self.isValidMove(oldPos, newPos))):
+        elif not self.isValidMove(oldPos, newPos):
             print("Invalid move.")
         else:
             piece = self.squares[oldX][oldY]
