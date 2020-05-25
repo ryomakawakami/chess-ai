@@ -19,7 +19,7 @@ class Board:
 
         # White bishops on (2, 0) and (5, 0)
         self.squares[2][0] = Piece(PieceType.BISHOP, 0)
-        self.squares[4][3] = Piece(PieceType.BISHOP, 0)
+        self.squares[5][0] = Piece(PieceType.BISHOP, 0)
 
         # White queen on (3, 0) (queen on left)
         self.squares[3][0] = Piece(PieceType.QUEEN, 0)
@@ -52,7 +52,6 @@ class Board:
         
         # Update legal moves for pieces
         self.update()
-        print(self.squares[4][3].moves)
 
     def update(self):
         i = 0
@@ -66,3 +65,26 @@ class Board:
                 piece.updateMoves(self.squares, (i, j))
                 j += 1
             i += 1
+
+
+    def isValidMove(self, pieceLocation, move):
+        x, y = pieceLocation
+        for mov in self.squares[x][y].moves:
+            if(move == mov):
+                return True
+
+        return False        
+
+    def movePiece(self, oldPos, newPos, color):
+        oldX, oldY = oldPos
+        newX, newY = newPos
+        if(self.squares[oldX][oldY] == None or self.squares[oldX][oldY].color != color):
+            print("Error: Piece does not exist or is not on your side.")
+        elif(not(self.isValidMove(oldPos, newPos))):
+            print("Invalid move.")
+        else:
+            piece = self.squares[oldX][oldY]
+            self.squares[oldX][oldY] = None
+            self.squares[newX][newY] = piece
+
+

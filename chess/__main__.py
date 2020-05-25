@@ -5,8 +5,11 @@ from chess.game.piece_type import PieceType
 if __name__ == "__main__":
     board = Board()
 
-    print(board.squares[1][1].moves)
-
+    print(board.squares[5][1].moves)
+    oldCoords = (5, 1)
+    newCoords = (5, 3)
+    board.movePiece(oldCoords, newCoords, 0)
+    board.movePiece(oldCoords, newCoords, 0)
     for row in board.squares:
         rowText = ""
         for piece in row:
