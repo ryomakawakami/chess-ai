@@ -11,45 +11,6 @@ if __name__ == "__main__":
     board.movePiece(oldCoords, newCoords, 0)
     oldCoords = (5,1)
     board.movePiece(oldCoords, newCoords, 0)
-    for row in board.squares:
-        rowText = ""
-        for piece in row:
-            if not piece:
-                rowText += "~ "
-                continue
-            t = piece.pieceType
-            color = piece.color
-            if t == PieceType.PAWN:
-                if color == 0:
-                    rowText += "♙"
-                else:
-                    rowText += "♟"
-            elif t == PieceType.ROOK:
-                if color == 0:
-                    rowText += "♖"
-                else:
-                    rowText += "♜"
-            elif t == PieceType.KNIGHT:
-                if color == 0:
-                    rowText += "♘"
-                else:
-                    rowText += "♞"
-            elif t == PieceType.BISHOP:
-                if color == 0:
-                    rowText += "♗"
-                else:
-                    rowText += "♝"
-            elif t == PieceType.QUEEN:
-                if color == 0:
-                    rowText += "♕"
-                else:
-                    rowText += "♛"
-            else:
-                if color == 0:
-                    rowText += "♔"
-                else:
-                    rowText += "♚"
 
-            rowText += " "
-        print(rowText)
+    board.display()
             

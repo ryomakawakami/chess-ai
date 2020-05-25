@@ -87,4 +87,45 @@ class Board:
             self.squares[oldX][oldY] = None
             self.squares[newX][newY] = piece
 
+    def display(self):
+        for row in self.squares:
+            rowText = ""
+            for piece in row:
+                if not piece:
+                    rowText += "~ "
+                    continue
+                t = piece.pieceType
+                color = piece.color
+                if t == PieceType.PAWN:
+                    if color == 0:
+                        rowText += "♙"
+                    else:
+                        rowText += "♟"
+                elif t == PieceType.ROOK:
+                    if color == 0:
+                        rowText += "♖"
+                    else:
+                        rowText += "♜"
+                elif t == PieceType.KNIGHT:
+                    if color == 0:
+                        rowText += "♘"
+                    else:
+                        rowText += "♞"
+                elif t == PieceType.BISHOP:
+                    if color == 0:
+                        rowText += "♗"
+                    else:
+                        rowText += "♝"
+                elif t == PieceType.QUEEN:
+                    if color == 0:
+                        rowText += "♕"
+                    else:
+                        rowText += "♛"
+                else:
+                    if color == 0:
+                        rowText += "♔"
+                    else:
+                        rowText += "♚"
 
+                rowText += " "
+            print(rowText)
