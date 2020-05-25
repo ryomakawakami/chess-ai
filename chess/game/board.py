@@ -72,7 +72,7 @@ class Board:
     def isValidMove(self, pieceLocation, move):
         x, y = pieceLocation
         for mov in self.squares[x][y].moves:
-            if(move == mov):
+            if move == mov:
                 return True
 
         return False        
@@ -80,10 +80,14 @@ class Board:
     def movePiece(self, oldPos, newPos, color):
         oldX, oldY = oldPos
         newX, newY = newPos
+<<<<<<< HEAD
         toRet = False
         if(self.squares[oldX][oldY] == None or self.squares[oldX][oldY].color != color):
+=======
+        if self.squares[oldX][oldY] == None or self.squares[oldX][oldY].color != color:
+>>>>>>> 674d16097693d6104743939424e6b73f7875d7f8
             print("Error: Piece does not exist or is not on your side.")
-        elif(not(self.isValidMove(oldPos, newPos))):
+        elif not self.isValidMove(oldPos, newPos):
             print("Invalid move.")
         else:
             piece = self.squares[oldX][oldY]
@@ -92,4 +96,45 @@ class Board:
             toRet = True
         return toRet
 
+    def display(self):
+        for row in self.squares:
+            rowText = ""
+            for piece in row:
+                if not piece:
+                    rowText += "~ "
+                    continue
+                t = piece.pieceType
+                color = piece.color
+                if t == PieceType.PAWN:
+                    if color == 0:
+                        rowText += "♙"
+                    else:
+                        rowText += "♟"
+                elif t == PieceType.ROOK:
+                    if color == 0:
+                        rowText += "♖"
+                    else:
+                        rowText += "♜"
+                elif t == PieceType.KNIGHT:
+                    if color == 0:
+                        rowText += "♘"
+                    else:
+                        rowText += "♞"
+                elif t == PieceType.BISHOP:
+                    if color == 0:
+                        rowText += "♗"
+                    else:
+                        rowText += "♝"
+                elif t == PieceType.QUEEN:
+                    if color == 0:
+                        rowText += "♕"
+                    else:
+                        rowText += "♛"
+                else:
+                    if color == 0:
+                        rowText += "♔"
+                    else:
+                        rowText += "♚"
 
+                rowText += " "
+            print(rowText)
