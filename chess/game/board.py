@@ -4,6 +4,7 @@ from chess.game.piece_type import PieceType
 class Board:
     def __init__ (self):
         self.squares = [[None for i in range(8)] for j in range(8)]
+        self.attackSquares = [[0 for i in range(8)] for j in range(8)]
 
         # White pawns (0, 1) to (7, 1)
         for i in range(8):
@@ -49,6 +50,7 @@ class Board:
 
         # White king on (4, 7)
         self.squares[4][7] = Piece(PieceType.KING, 1)
+
         
         # Update legal moves for pieces
         self.update()
@@ -62,7 +64,7 @@ class Board:
                 if not piece:
                     j += 1
                     continue
-                piece.updateMoves(self.squares, (i, j))
+                piece.updateMoves(self.squares, self.attackSquares, (i, j))
                 j += 1
             i += 1
 
@@ -78,6 +80,7 @@ class Board:
     def movePiece(self, oldPos, newPos, color):
         oldX, oldY = oldPos
         newX, newY = newPos
+        toRet = False
         if(self.squares[oldX][oldY] == None or self.squares[oldX][oldY].color != color):
             print("Error: Piece does not exist or is not on your side.")
         elif(not(self.isValidMove(oldPos, newPos))):
@@ -86,5 +89,7 @@ class Board:
             piece = self.squares[oldX][oldY]
             self.squares[oldX][oldY] = None
             self.squares[newX][newY] = piece
+            toRet = True
+        return toRet
 
 
