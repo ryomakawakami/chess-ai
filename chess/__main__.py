@@ -53,8 +53,6 @@ if __name__ == "__main__":
     gameSesh = GameSession()
     gameSesh.game()
 
-<<<<<<< HEAD
-=======
     print(board.squares[4][1].moves)
     oldCoords = (4, 1)
     newCoords = (4, 3)
@@ -66,5 +64,4 @@ if __name__ == "__main__":
     
     board.display()
     print(board.squares[5][0].moves)
->>>>>>> 674d16097693d6104743939424e6b73f7875d7f8
             

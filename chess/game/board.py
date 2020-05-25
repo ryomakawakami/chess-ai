@@ -80,12 +80,7 @@ class Board:
     def movePiece(self, oldPos, newPos, color):
         oldX, oldY = oldPos
         newX, newY = newPos
-<<<<<<< HEAD
-        toRet = False
-        if(self.squares[oldX][oldY] == None or self.squares[oldX][oldY].color != color):
-=======
         if self.squares[oldX][oldY] == None or self.squares[oldX][oldY].color != color:
->>>>>>> 674d16097693d6104743939424e6b73f7875d7f8
             print("Error: Piece does not exist or is not on your side.")
         elif not self.isValidMove(oldPos, newPos):
             print("Invalid move.")

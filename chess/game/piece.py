@@ -299,13 +299,9 @@ class Piece:
                 self.moves.append((x - 1, y + 2))
                 attacks[x - 1][y + 2]+= attackVal        
 
-<<<<<<< HEAD
     def addBishopMoves(self, squares, attacks, position):
         self.addBishopAttacks(squares, attacks, position)
 
-=======
-    def addBishopMoves(self, squares, position):
->>>>>>> 674d16097693d6104743939424e6b73f7875d7f8
         x, y = position
 
         offset = 0
