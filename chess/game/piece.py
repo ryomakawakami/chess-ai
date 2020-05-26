@@ -362,12 +362,12 @@ class Piece:
 
     #Return true if a square is safe
     def isWhiteSafe(self, attacks, x, y):
-        if(attacks[x][y] / 100 != 0):
+        if(int(attacks[x][y] / 100) == 0):
             return True
         return False
 
     def isBlackSafe(self, attacks, x, y):
-        if attacks[x][y] / 100 != 0:
+        if attacks[x][y] % 100 == 0:
             return True
         return False
 
