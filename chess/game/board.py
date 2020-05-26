@@ -58,17 +58,11 @@ class Board:
         self.update()
 
     def update(self):
-        i = 0
-        j = 0
-        for row in self.squares:
-            j = 0
-            for piece in row:
+        for i, row in enumerate(self.squares):
+            for j, piece in enumerate(row):
                 if not piece:
-                    j += 1
                     continue
                 piece.updateMoves(self.squares, self.attackSquares, (i, j))
-                j += 1
-            i += 1
 
 
     def isValidMove(self, pieceLocation, move):
