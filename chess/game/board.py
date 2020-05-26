@@ -74,6 +74,7 @@ class Board:
         return False        
 
     def movePiece(self, oldPos, newPos, color):
+        print(oldPos)
         oldX, oldY = oldPos
         newX, newY = newPos
         toRet = False

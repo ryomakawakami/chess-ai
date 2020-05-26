@@ -356,50 +356,75 @@ class Piece:
             self.moves.append((x - offset, y - offset))
             break
 
+
+    #These two funcions are called in the king moves function. They are aliased depending on the color of the king.
+    #They return whether or not a square is being attacked by the opposite side.
+
+    #Return true if a square is safe
+    def isWhiteSafe(self, attacks, x, y):
+        if(attacks[x][y] / 100 != 0):
+            return True
+        return False
+
+    def isBlackSafe(self, attacks, x, y):
+        if attacks[x][y] / 100 != 0:
+            return True
+        return False
+
     def addKingMoves(self, squares, attacks, position):
 
         x, y = position
         attackVal = 1
+        isSafe = self.isWhiteSafe
         if(self.color == 1):
             attackVal*=100
+            isSafe = self.isBlackSafe
         
         if x > 0:
             if squares[x - 1][y] == None or squares[x - 1][y].color != self.color:
-                self.moves.append((x - 1, y))
+                if(isSafe(attacks, x-1, y)):
+                    self.moves.append((x - 1, y))
                 attacks[x - 1][y]+= attackVal
                     
 
             if y > 0:
                 if squares[x - 1][y - 1] == None or squares[x - 1][y - 1].color != self.color:
-                    self.moves.append((x - 1, y - 1))
+                    if(isSafe(attacks, x-1, y)):
+                        self.moves.append((x - 1, y))
                     attacks[x - 1][y - 1]+= attackVal
 
             if y < 7:
                 if squares[x - 1][y + 1] == None or squares[x - 1][y + 1].color != self.color:
-                    self.moves.append((x - 1, y + 1))
+                    if(isSafe(attacks, x-1, y+1)):
+                        self.moves.append((x - 1, y + 1))
                     attacks[x - 1][y + 1]+= attackVal
 
         if x < 7:
             if squares[x + 1][y] == None or squares[x + 1][y].color != self.color:
-                self.moves.append((x + 1, y))
+                if(isSafe(attacks, x+1, y)):
+                    self.moves.append((x + 1, y))
                 attacks[x + 1][y]+= attackVal
 
             if y > 0:
                 if squares[x + 1][y - 1] == None or squares[x + 1][y - 1].color != self.color:
-                    self.moves.append((x + 1, y - 1))
+                    if(isSafe(attacks, x+1, y-1)):
+                        self.moves.append((x + 1, y - 1))
                     attacks[x + 1][y - 1]+= attackVal
 
             if y < 7:
                 if squares[x + 1][y + 1] == None or squares[x + 1][y + 1].color != self.color:
-                    self.moves.append((x + 1, y + 1))
+                    if(isSafe(attacks, x+1, y+1)):
+                        self.moves.append((x + 1, y + 1))
                     attacks[x + 1][y + 1]+= attackVal
 
         if y > 0:
             if squares[x][y - 1] == None or squares[x][y - 1].color != self.color:
-                self.moves.append((x, y - 1))
+                if(isSafe(attacks, x, y-1)):
+                    self.moves.append((x, y - 1))
                 attacks[x][y - 1]+= attackVal
 
         if y < 7:
             if squares[x][y + 1] == None or squares[x][y + 1].color != self.color:
-                self.moves.append((x, y + 1))
+                if(isSafe(attacks, x, y+1)):
+                    self.moves.append((x, y + 1))
                 attacks[x][y + 1]+= attackVal

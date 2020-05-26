@@ -61,9 +61,9 @@ class GameSession:
             self.displayBoard(board)
             while(True):
                 print("Input piece to move [x,y]: ")
-                currentPiece = input()
+                currentPiece = input().split(' ')
                 print("Input where to move [x,y]:")
-                movePiece = input()
+                movePiece = tuple(input().split(' '))
                 if(board.movePiece(currentPiece, movePiece, self.turn)):
                     break
             self.turn = 1-self.turn
