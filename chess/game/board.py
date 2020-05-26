@@ -1,3 +1,5 @@
+# -*- coding: utf-8 -*-
+
 from chess.game.piece import Piece
 from chess.game.piece_type import PieceType
 
@@ -80,6 +82,7 @@ class Board:
     def movePiece(self, oldPos, newPos, color):
         oldX, oldY = oldPos
         newX, newY = newPos
+        toRet = False
         if self.squares[oldX][oldY] == None or self.squares[oldX][oldY].color != color:
             print("Error: Piece does not exist or is not on your side.")
         elif not self.isValidMove(oldPos, newPos):
