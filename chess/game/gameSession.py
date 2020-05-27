@@ -3,12 +3,11 @@ import sys
 from chess.game.board import Board
 from chess.game.piece import Piece
 from chess.game.piece_type import PieceType
-class GameSession:
 
+class GameSession:
     def __init__(self):
         self.turn = 0
         self.gameOn = True
-
 
     def displayBoard(self, board):
             for row in board.squares:
