@@ -3,7 +3,7 @@ import sys
 from chess.game.board import Board
 from chess.game.piece import Piece
 from chess.game.piece_type import PieceType
-
+##Ryoma Kawakami wuz here 
 class GameSession:
     def __init__(self):
         self.turn = 0
