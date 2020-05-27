@@ -6,6 +6,9 @@ from chess.game.piece_type import PieceType
 
 # Geoff was here
 ##Ryoma Kawakami wuz here 
+#Ryoma Kawakami
+#Ryoms Kawakami
+#Ryoma Kawakami
 class GameSession:
     def __init__(self):
         self.turn = 0
